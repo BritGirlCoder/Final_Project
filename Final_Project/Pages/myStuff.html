@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Stuff</title>
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--local CSS-->
+    <link href="style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center"  id="myStuffh1">Where's my Stuff?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Your Profile</a>
+                    </li>
+                    <li class="active">
+                        <a href="myStuff.html">Your Stuff</a>
+                    </li>
+                    <li class="dropdown pull-right">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quick Access<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="profile.html">Create Your Profile</a>
+                            </li>
+                            <li>
+                                <a href="#login-modal" data-toggle="modal">Log-in</a>
+                            </li>
+                            <li>
+                                <a href="myStuff.html">Add New Stuff</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="about.html">About Where's My Stuff</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="modLeftPadding">
+                    <img id="myStuffItemImage" src="http://www.shipping-worldwide.com/bigstockphoto_Warehouse_2012713.jpg"
+                         class="img-responsive img-rounded" alt="Your Stuff" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Add your items below</h4>
+                <form>
+                    <div class="form-group">
+                        <label>Name of item:</label>
+                        <input type="text" id="myStuffItemName" class="form-control" placeholder="Item Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description of item:</label>
+                        <input type="text" id="myStuffItemDesc" class="form-control" placeholder="Item Description" />
+                    </div>
+                    <div class="form-group">
+                        <label>Location of item:</label>
+                        <select class="form-control" id="location">
+                            <option>Home - Living Room</option>
+                            <option>Home - Dining Room</option>
+                            <option>Home - Kitchen</option>
+                            <option>Home - Master Bedroom</option>
+                            <option>Home - Bedroom 1</option>
+                            <option>Home - Bedroom 2</option>
+                            <option>Home - Office</option>
+                            <option>Home - Garage</option>
+                            <option>Storage Unit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Box Number:</label>
+                        <input type="text" id="myStuffItemBox" class="form-control" placeholder="001" />
+                    </div>
+                    <h4>Upload a Photo:</h4>
+                    <div class="form-group">
+                        <label>Browse to your photo</label>
+                        <input id="myStuffItemPhoto" type="file" class="file" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="btnCreateItem" type="button" class="btn btn-primary" value="Add Item" onclick="addItem()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="btnEditItem" type="button" class="btn btn-warning" value="Edit Item" onclick="editItem()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="btnSaveItem" type="button" class="btn btn-info" value="Save Items" onclick="saveItem()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="btnListItems" type="button" class="btn btn-success" value="List Items" onclick="displayItems()" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input id="btnDeleteItem" type="button" class="btn btn-danger" value="Delete Item" onclick="deleteItem()" />
+                                </div>
+                            </div>                            
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5" id="myStuffItemTable">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 flexbox" id="myStuffNotifications">
+
+            </div>
+            
+
+        </div>
+    </div>
+
+    <!--modal login-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">Login to Your Account</div><br>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <form class="form-group center-block">
+                                        <input class="form-control" id="loginUserName" type="text" name="user" placeholder="Username">
+                                        <input class="form-control" id="loginPassword" type="password" name="pass" placeholder="Password">
+                                    </form>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input class="btn btn-primary" type="submit" name="login" value="Login" onclick="logIn()">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="modLogin-help">
+                                        <a id="register" href="profile.html">Register</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Scripts/app.js"></script>
+</body>
+</html>

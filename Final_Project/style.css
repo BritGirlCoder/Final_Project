@@ -1,0 +1,33 @@
+﻿
+.modLogin-help{
+  font-size: 12px;
+  padding-left:20px;
+}
+
+.modCarouselCaption{
+    color: deepskyblue;
+}
+.modImgCarousel{
+    margin:auto;
+}
+.emphasis{
+    font-style:oblique;
+}
+.medText{
+    font-size:x-large;
+}
+.modTopPadding{
+    padding-top:100px;
+}
+.modLeftPadding{
+    padding-left:50px;
+}
+.modLeftMargin{
+    margin-left:50px;
+}
+.modVerticalCenter{
+    vertical-align:middle;
+}
+.modRedColor{
+    color:red;
+}

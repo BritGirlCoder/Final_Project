@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--local CSS-->
+    <link href="style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body onload="displayProfile()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center" id="profileh1">Let's Get Started!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="profile.html">Your Profile</a>
+                    </li>
+                    <li>
+                        <a href="myStuff.html">Your Stuff</a>
+                    </li>
+                    <li class="dropdown pull-right">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quick Access<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="profile.html">Create Your Profile</a>
+                            </li>
+                            <li>
+                                <a href="#login-modal" data-toggle="modal">Log-in</a>
+                            </li>
+                            <li>
+                                <a href="myStuff.html">Add New Stuff</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="about.html">About Where's My Stuff</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <!--Static image-->
+            <div class="col-md-3">
+                <div>
+                    <img src="http://www.elementalnw.com/wp-content/uploads/2014/08/Unknown-person.jpg"
+                         class="img-responsive img-rounded" alt="About You" />
+                </div>
+            </div>
+            <!--profile form-->
+            <div class="col-md-6">
+                <h4>Create or manage your profile below</h4>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" id="profileFullName" class="form-control" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email/Username:</label>
+                        <input type="email" id="profileUsername" class="form-control" placeholder="name@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="profilePassword" class="form-control" placeholder="Enter a password" />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone:</label>
+                        <input type="tel" id="profilePhone" class="form-control" placeholder="555-555-5555" />
+                    </div>
+                    <h4>Current Address:</h4>
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input type="text" id="profileStreet" class="form-control" placeholder="123 Any St." />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" id="profileCity" class="form-control" placeholder="Any City" />
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" id="profileState" class="form-control" placeholder="Any State" />
+                    </div>
+                    <div class="form-group">
+                        <label>Zip</label>
+                        <input type="text" id="profileZip" class="form-control" placeholder="95210" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="button" id="profileBtnCreate" class="btn btn-primary" value="Create Profile!" onclick="addUser()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="button" id="profileBtnEdit" class="btn btn-info disabled" value="Edit Profile" onclick="editProfile()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="button" id="profileBtnSave" class="btn btn-info disabled" value="Save Changes" onclick="saveProfile()" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="button" id="profileBtnDelete" class="btn btn-danger disabled" value="Delete Profile" onclick="deleteUser()" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--Notifications area-->
+            <div class="col-md-3 flexbox" id="profileNotifications">
+
+            </div>
+        </div>
+    </div>
+
+    <!--modal login-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">Login to Your Account</div><br>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <form class="form-group center-block">
+                                        <input class="form-control" id="loginUserName" type="text" name="user" placeholder="Username">
+                                        <input class="form-control" id="loginPassword" type="password" name="pass" placeholder="Password">
+                                    </form>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input class="btn btn-primary" type="submit" name="login" value="Login" onclick="logIn()">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="modLogin-help">
+                                        <a id="register" href="profile.html">Register</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Scripts/app.js"></script>
+</body>
+</html>

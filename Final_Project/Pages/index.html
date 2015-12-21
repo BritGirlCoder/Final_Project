@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Where's My Stuff?</title>
+    <meta charset="utf-8" />
+    <!--Cerulean theme bootstrap CDN-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha256-obxCG8hWR3FEKvV19p/G6KgEYm1v/u1FnRTS7Bc4Ii8= sha512-8Xs5FuWgtHH1JXye8aQcxVEtLqozJQAu8nhPymuRqeEslT6nJ2OgEYeS3cKiXasOVxYPN80DDoOTKWgOafU1LQ==" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+    <!--local CSS-->
+    <link href="style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+</head>
+<!--To Do:
+    - myStuff: Code Create Item button  
+    - myStuff: Code Delete Item button
+    - myStuff: Code Update Item button
+    - myStuff: Enable myStuff inputs only when logged in (sessionState.userName != "";)
+    - profile: Code Create, Edit, Save, Delete profile buttons.
+    - profile: Edit is disabled until logged in (loggedIn = yes)
+    - Add IDs to all elements that involve CRUD
+    - Figure out how I'm going to save account & item information (arrays, sessionState)
+    - -->
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center" id="indexh1">Where's my Stuff?</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="index.html" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Your Profile</a>
+                    </li>
+                    <li>
+                        <a href="myStuff.html">Your Stuff</a>
+                    </li>
+                    <li class="dropdown pull-right">
+                        <a href="index.html" data-toggle="dropdown" class="dropdown-toggle">Quick Access<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="profile.html">Create Your Profile</a>
+                            </li>
+                            <li>
+                                <!--don't forget the # before the data-target to indicate it's an ID-->
+                                <a href="#login-modal" data-toggle="modal">Log-in</a>
+                            </li>
+                            <li>
+                                <a href="myStuff.html">Add New Stuff</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="about.html">About Where's My Stuff</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="carousel slide" id="carousel-205284">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-205284">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-205284">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-205284">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="modImgCarousel center-block" alt="Moving Truck" src="http://roadrunnermoverscleveland.com/wp-content/uploads/2015/02/banner.jpg" />
+                            <div class="carousel-caption modCarouselCaption">
+                                <h3>
+                                    Moving?
+                                </h3>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="modImgCarousel center-block" alt="Storage Unit" src="http://www.vossrdstorage.com/wp-content/themes/voss/images/self-storage-sugarland-tx.jpg" />
+                            <div class="carousel-caption modCarouselCaption">
+                                <h3>
+                                    What's in Storage?
+                                </h3>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="modImgCarousel center-block" alt="House Clearance" src="http://jarrettsvillefurniture.com/wp-content/uploads/page-header-sale-current.jpg" />
+                            <div class="carousel-caption modCarouselCaption">
+                                <h3>
+                                    Clearing out a property?
+                                </h3>
+
+                            </div>
+                        </div>
+                    </div> <a class="left carousel-control" href="#carousel-205284" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-205284" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+
+                <div class="jumbotron">
+                    <h2>
+                        Got Stuff?
+                    </h2>
+                    <p>
+                        We get it. Somehow you have all this stuff. It's in your closets, your garage,
+                        your storage unit, your parents' house. Who knows what you really have? That's
+                        why Where's My Stuff makes it really easy to inventory your things and keep
+                        track of what you've got!
+                    </p>
+                    <p>
+                        We can help if you're:
+                        <ul class="medText">
+                            <li>On the move</li>
+                            <li>Clearing out a property</li>
+                            <li>Trying not to buy the same widget <span class="emphasis">again</span> because you can't find the one(s) you've got</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <a class="btn btn-primary btn-large" href="about.html">Learn more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">Login to Your Account</div><br>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <form class="form-group center-block">
+                                            <input class="form-control" id="loginUserName" type="text" name="user" placeholder="Username">
+                                            <input class="form-control" id="loginPassword" type="password" name="pass" placeholder="Password">
+                                        </form>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input class="btn btn-primary" type="submit" name="login" value="Login" onclick="logIn()">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="modLogin-help">
+                                            <a id="register" href="profile.html">Register</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-4">
+                    <h2>
+                        Your Profile
+                    </h2>
+                    <h4>
+                        Tell us about yourself.
+                    </h4>
+                    <p class="medText">
+                        Add your name, addresses, contact information for movers, locations of
+                        your stuff, buyers, sellers, renters ... All the information you need at
+                        your fingertips!
+                    </p>
+                    <p>
+                        <a class="btn" href="profile.html">View details »</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>
+                        Your Stuff
+                    </h2>
+                    <h4>
+                        Tell us about your stuff.
+                    </h4>
+                    <p class="medText">
+                        Add photos, where it is, purchase price and date, whether you plan to sell it
+                        or give it away, moving box numbers, descriptions. Never lose a widget
+                        (or your grandmother's tea service) again!
+                    </p>
+                    <p>
+                        <a class="btn" href="myStuff.html">View details »</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>
+                        Learn More
+                    </h2>
+                    <h4>
+                        Learn about the people behind <span class="emphasis">Where's My Stuff</span>.
+                    </h4>
+                    <p class="medText">
+                        As veterans of almost 30 moves themselves (including international moves), and with
+                        family in the house clearance business, they understand how easy it is to lose
+                        valuables, make duplicate purchases, or even just forget what you have.  We built Where's
+                        My Stuff to help you keep it all organized!
+                    </p>
+                    <p>
+                        <a class="btn" href="about.html">View details »</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+
+    <script src="../Scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--local CSS-->
+    <link href="style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center"  id="abouth1">About Where's my Stuff?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Your Profile</a>
+                    </li>
+                    <li>
+                        <a href="myStuff.html">Your Stuff</a>
+                    </li>
+                    <li class="dropdown pull-right">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quick Access<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="profile.html">Create Your Profile</a>
+                            </li>
+                            <li>
+                                <a href="#login-modal" data-toggle="modal">Log-in</a>
+                            </li>
+                            <li>
+                                <a href="myStuff.html">Add New Stuff</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="about.html">About Where's My Stuff</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <img src="http://www.theplaidzebra.com/wp-content/uploads/2015/04/2_epic-US-road-trip.jpg"
+                     class="img-responsive img-rounded center-block" alt="Road Trip" />
+
+                <div class="jumbotron">
+                    <h2>
+                        Why "Where's my Stuff"?
+                    </h2>
+                    <p>
+                        The founders of Where's my Stuff move about as often as most people take
+                        vacation.  On average, they've moved once a year for the past 15 years.
+                    </p>
+                    <p>
+                        Sometimes they've moved across a state (or even to a different country).
+                    </p>
+                    <p>
+                        Sometimes they've only moved across town: like the time they realized that the
+                        hardwood floors in their apartment looked awesome but had no soundproofing
+                        whatsoever - and the folks upstairs worked weird hours - time to move!
+                    </p>
+                    <p>
+                        Every move meant packing up everything they owned into boxes.  And no matter
+                        how well the boxes were labeled, there were times when they just couldn't find
+                        that widget.  Sometimes not every box got unpacked right away and they forgot
+                        they already owned the widget.
+                    </p>
+                    <p>
+                        Our goal at Where's My Stuff? is to help you keep track of what you have and where
+                        it is.  Upload the name and description of your item, its photo, where it is, and
+                        never lose an item again.  You'll know that your rarely used craft supplies are in
+                        box 3 in the storage unit, and that last year's saved seeds are in box 10 in the garage.
+                    </p>
+
+                    <p>
+                        <a class="btn btn-primary btn-large" href="profile.html">Sign up now!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-9">
+
+            </div>
+        </div>
+    </div>
+
+    <!--modal log-in-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">Login to Your Account</div><br>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <form class="form-group center-block">
+                                        <input class="form-control" id="loginUserName" type="text" name="user" placeholder="Username">
+                                        <input class="form-control" id="loginPassword" type="password" name="pass" placeholder="Password">
+                                    </form>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input class="btn btn-primary" type="submit" name="login" value="Login" onclick="logIn()">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="modLogin-help">
+                                        <a id="register" href="profile.html">Register</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../Scripts/app.js"></script>
+</body>
+</html>
