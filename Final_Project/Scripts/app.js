@@ -5,15 +5,10 @@
 var users = [];
 var items = [];
 var loggedin;
-//Using sessionStorage for UserIndex & ItemIndex
-//var selectedUserIndex; - userIndex
-//var selectedItemIndex; - itemIndex
-//Using sessionStorage for username & password
-//var userName; - userName
-//var userPassword - userPassword
+
+//***OBJECTS
 
 //User constructor
-//WORKS
 var User = function (_fullName, _username, _password, _phone, _street, _city, _state, _zip) {
     this.fullName = _fullName;
     this.username = _username;
@@ -26,7 +21,6 @@ var User = function (_fullName, _username, _password, _phone, _street, _city, _s
 }
 
 //Item constructor
-//WORKS
 var Item = function (_userName, _itemName, _itemDesc, _itemLocation, _itemLocationIndex, _itemBox, _itemPhoto) {
     this.userName = _userName;
     this.itemName = _itemName;
@@ -37,14 +31,14 @@ var Item = function (_userName, _itemName, _itemDesc, _itemLocation, _itemLocati
     this.itemPhoto = _itemPhoto;
 }
 
+//***LOGIN
+
 //Login
-//WORKS
 function logIn() {
     //Grab info from the login input boxes
     var loginUser = document.getElementById("loginUserName").value;
     var loginPassword = document.getElementById("loginPassword").value;
     var currentUser = new User;
-    //var users = "";
     users = jsonParse('usersArray');
     
     //Verify the username & password exist if not blank
@@ -63,9 +57,14 @@ function logIn() {
                 $("#profileh1").text("Welcome! Let's Get Started!").css("color", "red");
                 $("#indexh1").text("Welcome! Where's my Stuff?").css("color", "red");
                 $('#login-modal').modal('hide');
-                //Notify user of success!
-                document.getElementById("profileNotifications").innerHTML =
+                //Notify user of success if on profile page - will provide modal option for other pages in future
+                var currentPage = location.href.split("/").slice(-1);
+
+                if (currentPage == "profile") {
+                    document.getElementById("profileNotifications").innerHTML =
                     "<h3 class='show text-center' id='profileParaNotification'>You have now logged in!<br /> Click <a href='profile.html'>here</a> to view your profile information</h3>";
+                }
+                
                 break;
             }
             else {
@@ -86,15 +85,14 @@ function logIn() {
     }
 }
 
+//***CREATE
+
 //Create user
-//WORKS
 function addUser() {
     //Clear any notifications
     document.getElementById("profileNotifications").innerHTML = "";
 
     //Grab values from the profile input boxes
-    //var firstName = document.getElementById("firstName").value;
-    //set below directly into user & then push directly into users.push(user);
     var fullname = $("#profileFullName").val();
     var username = document.getElementById("profileUsername").value;
     var password = document.getElementById("profilePassword").value;
@@ -117,7 +115,6 @@ function addUser() {
 }
 
 //Create item
-//WORKS
 function addItem() {
     document.getElementById("myStuffNotifications").innerHTML = "";
     //Check user is logged in
@@ -138,7 +135,7 @@ function addItem() {
         var itemBox = document.getElementById("myStuffItemBox").value;
         var itemPhoto = document.getElementById("myStuffItemPhoto").value;
 
-        //Create a new Item object (don't forget the username from sessionStorage.user)
+        //Create a new Item object; use the username from sessionStorage.user
         var item = new Item(userName, itemName, itemDesc, itemLocation, itemLocationIndex, itemBox, itemPhoto);
         //Push data into items array & sesionStorage.itemsArray
         items.push(item);
@@ -148,7 +145,6 @@ function addItem() {
         document.getElementById("myStuffNotifications").innerHTML =
         "<h3 class='show text-center' id='myStuffParaNotification'>Your item has been added!<br /> " +
         "Click <a onclick='displayItems()'>here</a> to display your current list of items </h3>";
-        //displayItems();
     }
     else {
         var loginModal = document.getElementById("login-modal");
@@ -159,27 +155,14 @@ function addItem() {
 
 }
 
-//Function to handle JSON.stringify
-//DONE
-function jsonStringify(sessionStorageObj) {
-    return JSON.stringify(sessionStorageObj);
-
-}
-
-//Function to handle JSON.parse
-//DONE
-function jsonParse(sessionStorageObj) {
-    return JSON.parse(sessionStorage.getItem(sessionStorageObj));
-}
+//***RETRIEVE
 
 //Read user
-//DONE
 function displayProfile(username) {
     //Clear any notifications
     document.getElementById("profileNotifications").innerHTML = "";
 
-    //Grab the current sessionStorage.user on profile pageload *if* logged in
-    //var currentUser = new User;
+    //Get the current sessionStorage.user on profile pageload & get the logged in value also
     var currentUser = jsonParse('user');
     loggedin = jsonParse('loggedin');
 
@@ -223,9 +206,10 @@ function displayProfile(username) {
 }
 
 //Read items
-//WORKS
 function displayItems() {
+    //Get the logged in status
     loggedin = jsonParse('loggedin');
+    //Reset any prior notification on the page
     document.getElementById("myStuffNotifications").innerHTML = "";
 
     if (loggedin) {
@@ -287,7 +271,6 @@ function displayItems() {
 }
 
 //Display photo of item selected in table
-//DONE
 function displayItemPhoto(selectedRdo) {
     //display the selected item's photo (change event from the radio button)
 
@@ -314,8 +297,9 @@ function displayItemPhoto(selectedRdo) {
 
 }
 
+//**UPDATE
+
 //Update user profile
-//DONE
 function editProfile() {
 
     //enable all but the username for editing
@@ -330,7 +314,6 @@ function editProfile() {
 }
 
 //Save user profile changes
-//WORKS
 function saveProfile() {
     //Clear any message
     document.getElementById("profileNotifications").innerHTML = "";
@@ -374,7 +357,6 @@ function saveProfile() {
 }
 
 //Update item
-//DONE
 function editItem() {
     //Clear any notifications
     document.getElementById("myStuffNotifications").innerHTML = "";
@@ -408,7 +390,6 @@ function editItem() {
 }
 
 //Save item changes
-//WORKS
 function saveItem() {
     //Clear any notifications
     document.getElementById("myStuffNotifications").innerHTML = "";
@@ -481,13 +462,14 @@ function saveItem() {
     }
     if (updated) {
         document.getElementById("myStuffNotifications").innerHTML =
-"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been updated!" +
+"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been updated! < /br>" +
         "Click <a onclick='displayItems()'>here</a> to display your updated list of items </h3>";
     }
 }
 
+//***DELETE
+
 //Delete user
-//WORKS
 function deleteUser() {
     //Clear any notifications
     document.getElementById("profileNotifications").innerHTML = "";
@@ -574,9 +556,7 @@ function deleteUser() {
     clearProfileForm();
 }
 
-
 //Delete items
-//WORKS
 function deleteItem() {
     //Clear any notifications
     document.getElementById("myStuffNotifications").innerHTML = "";
@@ -614,14 +594,15 @@ function deleteItem() {
         }
         if (deleted) {
             document.getElementById("myStuffNotifications").innerHTML =
-"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been deleted" +
+"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been deleted < /br>" +
         "Click <a onclick='displayItems()'>here</a> to display your updated list of items </h3>";
         }
     }
 }
 
+//***UTILITIES section
+
 //Clear profile form
-//DONE
 function clearProfileForm() {
     document.getElementById("profileFullName").value = "";
     document.getElementById("profileUsername").value = "";
@@ -634,7 +615,6 @@ function clearProfileForm() {
 }
 
 //Clear item form
-//DONE
 function clearItemForm() {
 
     $("#myStuffItemName").val("");
@@ -644,3 +624,13 @@ function clearItemForm() {
     document.getElementById("myStuffItemPhoto").value = "";
 }
 
+//Function to handle JSON.stringify
+function jsonStringify(sessionStorageObj) {
+    return JSON.stringify(sessionStorageObj);
+
+}
+
+//Function to handle JSON.parse
+function jsonParse(sessionStorageObj) {
+    return JSON.parse(sessionStorage.getItem(sessionStorageObj));
+}
