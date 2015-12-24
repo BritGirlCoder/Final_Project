@@ -462,7 +462,7 @@ function saveItem() {
     }
     if (updated) {
         document.getElementById("myStuffNotifications").innerHTML =
-"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been updated! < /br>" +
+"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been updated! </br>" +
         "Click <a onclick='displayItems()'>here</a> to display your updated list of items </h3>";
     }
 }
@@ -594,7 +594,7 @@ function deleteItem() {
         }
         if (deleted) {
             document.getElementById("myStuffNotifications").innerHTML =
-"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been deleted < /br>" +
+"<h3 class='show text-center' id='myStuffParaNotification'>Your item has been deleted </br>" +
         "Click <a onclick='displayItems()'>here</a> to display your updated list of items </h3>";
         }
     }
